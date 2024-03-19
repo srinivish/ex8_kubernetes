@@ -29,9 +29,9 @@ pipeline {
 				expression { params.action == 'create' }
 			}
     		steps {
-        		dir("${params.AppName}") {
+ //       		dir("${params.AppName}") {
         			sh 'mvn clean package'
-        		}
+ //       		}
     		}
 	    }
     }
