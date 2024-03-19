@@ -53,6 +53,14 @@ pipeline {
 			    sh 'ansible-playbook ${WORKSPACE}/server_setup.yml'
 			}
 		}
-
+	    stage("Create deployment") {
+			when {
+				expression { params.action == 'create' }
+			}
+	        steps {
+	            sh 'echo ${WORKSPACE}'
+	            sh 'kubectl create -f ${WORKSPACE}/kubernetes-configmap.yml'
+	        }
+	    }
     }
 }
