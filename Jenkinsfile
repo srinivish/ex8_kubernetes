@@ -34,5 +34,24 @@ pipeline {
  //       		}
     		}
 	    }
+	    stage("Docker Build and Push") {
+	        when {
+				expression { params.action == 'create' }
+			}
+	        steps {
+//	            dir("${params.AppName}") {
+	                dockerBuild ( "${params.ImageName}", "${params.docker_repo}" )
+//	            }
+	        }
+	    }
+/*		stage("Ansible Setup") {
+	        when {
+				expression { params.action == 'create' }
+			}
+	        steps {
+	            sh 'ansible-playbook ${WORKSPACE}/kubernetes-configmap-reload/server_setup.yml'
+			}
+		}
+*/
     }
 }
