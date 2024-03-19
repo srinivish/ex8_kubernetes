@@ -5,7 +5,7 @@ management:
         inculde: info, refresh, keepalive, health
 logging:
   level:
-    org.springframework.cloud.kubernetes: DEBUG
+    org.springframework.cloud.kubernetes: WARN
 
 spring:
   application:
